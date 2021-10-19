@@ -13,7 +13,7 @@
 * [fortune.yaml](fortune.yaml) - deployment for k8s
 * [test.py](test.py) - python appllication
 
-## Requierments
+## Requierements
 * Docker - [link](https://docs.docker.com/engine/install/)
 * kubectl - [link](https://kubernetes.io/ru/docs/tasks/tools/install-kubectl/)
 * minikube - [link](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/) 
