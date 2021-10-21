@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: fortune-ingress
+  namespace: vlad
+spec:
+  rules:
+  - host: fortune-vlad.kubelab.spainip.es
+    http:
+      paths:
+      - backend:
+          service:
+            name: fortune-service
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - fortune-vlad.kubelab.spainip.es
+    secretName: tls-fortune-ingress
