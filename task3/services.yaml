@@ -1,0 +1,32 @@
+# Service for Wordpress frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+  namespace: vlad
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: wordpress
+    tier: frontend
+
+---
+# Internal service for mysql database
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-mysql
+  namespace: vlad
+  labels:
+    app: wordpress
+spec:
+  ports: 
+    - port: 3306
+  selector:
+    app: wordpress
+    tier: mysql
+  clusterIP: None
