@@ -1,0 +1,41 @@
+namespace: vlad
+
+
+wordpress:
+    deployment:
+        image: wordpress:4.8-apache
+        replicaCount: 1
+    service:
+        type: NodePort
+        port: 80
+   
+mysql:
+    deployment:
+        image: mysql:5.6
+        replicaCount: 1
+    service:
+        type: ClusterIP
+        port: 3306
+    pvc:
+        accessMode: ReadWriteOnce
+        storage: 5Gi
+        storageClassName: hcloud-volumes
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: 
+     cert-manager.io/cluster-issuer: letsencrypt
+  hosts:
+    - host:     
+      port:
+        name: http 
+        number: 80
+      paths:  
+       - path: /
+         pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - wordpress-vlad.kubelab.spainip.es
+    secretName: tls-wordpress-ingress
+
