@@ -22,3 +22,4 @@ spec:
   - hosts:
     - wordpress-vlad.kubelab.spainip.es
     secretName: tls-wordpress-ingress
+
